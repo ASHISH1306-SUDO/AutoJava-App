@@ -2,20 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('code-checkout') {
+        stage('Code Checkout') {
             steps {
-                git url: 'https://github.com/ASHISH1306-SUDO/AutoJava-App.git', branch: 'master'
+                git url: 'https://github.com/ASHISH1306-SUDO/AutoJava-App.git', branch: 'main'
             }
         }
 
-        stage('compile & Build') {
+        stage('Compile & Build') {
             steps {
-                sh 'mvn clean package -Dskiptests'
+                sh 'mvn clean package -DskipTests'
             }
         }
 
-        stage('Test') {
-            sh 'mvn test'
+        stage('Unit Test') {
+            steps {
+                sh 'mvn test'
+            }
         }
     }
 }
