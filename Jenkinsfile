@@ -1,9 +1,6 @@
 pipeline {
-    agent {
-	docker {
-	     image 'node:18-alpine'
-	}
-    } 
+    agent any
+	
     environment {
         DOCKER_IMAGE = "ashish2909/autojava-app"
         DOCKER_TAG = "${env.BUILD_NUMBER}"
